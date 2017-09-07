@@ -3,8 +3,13 @@
   <xacro:macro name="rethink_pneumatic_gripper" params="side">
 
     <xacro:property name="tip_length" value="${0.06 + 0.02}" scope="local"/>
+    <xacro:property name="extension_length" value="${0.045}" scope="local"/>
+    <xacro:property name="collision_cylinder_length" value="${extension_length+0.08}" scope="local"/>
+    <xacro:property name="z_pos_tip_joint" value="${extension_length+tip_length}" scope="local"/>
 
-    <!-- Base of end effector -->
+ 
+
+   <!-- Base of end effector -->
     <link name="${side}_gripper_base">
       <visual>
         <origin rpy="0 ${pi} ${pi}" xyz="0 0 0"/>
@@ -15,7 +20,7 @@
       <collision>
         <origin rpy="0 ${pi} ${pi}" xyz="0.0 0.0 0.04"/>
         <geometry>
-          <cylinder length="0.08" radius="0.02"/>
+          <cylinder length="${collision_cylinder_length}" radius="0.02"/>
         </geometry>
         <material name="darkred">
           <color rgba=".5 .1 .1 1"/>
@@ -36,7 +41,7 @@
     </joint>
     <!-- Pneumatic Gripper Tip joint -->
     <joint name="${side}_endpoint" type="fixed">
-      <origin rpy="0 0 0" xyz="0 0 ${tip_length}"/>
+      <origin rpy="0 0 0" xyz="0 0 ${z_pos_tip_joint}"/>
       <parent link="${side}_gripper_base"/>
       <child link="${side}_gripper"/>
     </joint>
