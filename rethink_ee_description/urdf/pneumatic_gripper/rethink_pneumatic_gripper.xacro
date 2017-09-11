@@ -3,7 +3,7 @@
   <xacro:macro name="rethink_pneumatic_gripper" params="side">
 
     <xacro:property name="tip_length" value="${0.06 + 0.02}" scope="local"/>
-    <xacro:property name="extension_length" value="${0.045}" scope="local"/>
+    <xacro:property name="extension_length" value="${0.055}" scope="local"/>
     <xacro:property name="collision_cylinder_length" value="${extension_length+0.08}" scope="local"/>
     <xacro:property name="z_pos_tip_joint" value="${extension_length+tip_length}" scope="local"/>
 
