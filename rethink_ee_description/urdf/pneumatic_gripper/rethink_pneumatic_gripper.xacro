@@ -39,7 +39,7 @@
       <parent link="${side}_hand"/>
       <child link="${side}_gripper_base"/>
     </joint>
-    <!-- Pneumatic Gripper Tip joint -->
+    <!-- Pneumatic Gripper Tip joint custem -->
     <joint name="${side}_endpoint" type="fixed">
       <origin rpy="0 0 0" xyz="0 0 ${z_pos_tip_joint}"/>
       <parent link="${side}_gripper_base"/>
